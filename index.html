@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="./pages/index.css">
     <title>MESTO</title>
   </head>
-  <body class="body">
-    <header class="header body__header">
+  <body class="page">
+    <header class="header page__header">
       <img class="header__logo" src="./images/Logo.svg" alt="Логотип">
     </header>
     <main class="content">
@@ -27,71 +27,59 @@
       <section class="elements page__elements">
         <ul class="elements__list">
 
-          <li class="elements__list-item">
-            <div class="elements__card">
-              <img class="elements__image" src="./images/Домбай.png" alt="">
-              <div class="elements__card-container">
-                <h2 class="elements__card-title">Домбай</h2>
-                <button class="elements__like-icon" type="button" aria-label="поставить лайк"></button>
-              </div>
+          <li class="element">
+            <img class="element__image" src="./images/Таиланд.jpg" alt="Таиланд">
+            <div class="element__card-container">
+              <h2 class="element__card-title">Таиланд</h2>
+              <button class="element__like-icon" type="button" aria-label="поставить лайк"></button>
             </div>
           </li>
 
-          <li class="elements__list-item">
-            <div class="elements__card">
-              <img class="elements__image" src="./images/Домбай.png" alt="">
-              <div class="elements__card-container">
-                <h2 class="elements__card-title">Домбай</h2>
-                <button class="elements__like-icon" type="button" aria-label="поставить лайк"></button>
-              </div>
+          <li class="element">
+            <img class="element__image" src="./images/Бали.jpg" alt="Бали">
+            <div class="element__card-container">
+              <h2 class="element__card-title">Бали</h2>
+              <button class="element__like-icon" type="button" aria-label="поставить лайк"></button>
             </div>
           </li>
 
-          <li class="elements__list-item">
-            <div class="elements__card">
-              <img class="elements__image" src="./images/Домбай.png" alt="">
-              <div class="elements__card-container">
-                <h2 class="elements__card-title">Домбай</h2>
-                <button class="elements__like-icon" type="button" aria-label="поставить лайк"></button>
+          <li class="element">
+              <img class="element__image" src="./images/Мальдивы.jpg" alt="Мальдивы">
+              <div class="element__card-container">
+                <h2 class="element__card-title">Мальдивские острова</h2>
+                <button class="element__like-icon" type="button" aria-label="поставить лайк"></button>
               </div>
-            </div>
           </li>
 
-          <li class="elements__list-item">
-            <div class="elements__card">
-              <img class="elements__image" src="./images/Домбай.png" alt="">
-              <div class="elements__card-container">
-                <h2 class="elements__card-title">Домбай</h2>
-                <button class="elements__like-icon" type="button" aria-label="поставить лайк"></button>
+          <li class="element">
+              <img class="element__image" src="./images/Япония.jpg" alt="Япония">
+              <div class="element__card-container">
+                <h2 class="element__card-title">Япония</h2>
+                <button class="element__like-icon" type="button" aria-label="поставить лайк"></button>
               </div>
-            </div>
           </li>
 
-          <li class="elements__list-item">
-            <div class="elements__card">
-              <img class="elements__image" src="./images/Домбай.png" alt="">
-              <div class="elements__card-container">
-                <h2 class="elements__card-title">Домбай</h2>
-                <button class="elements__like-icon" type="button" aria-label="поставить лайк"></button>
+          <li class="element">
+              <img class="element__image" src="./images/Токио.jpg" alt="Токио">
+              <div class="element__card-container">
+                <h2 class="element__card-title">Токио</h2>
+                <button class="element__like-icon" type="button" aria-label="поставить лайк"></button>
               </div>
-            </div>
           </li>
 
-          <li class="elements__list-item">
-            <div class="elements__card">
-              <img class="elements__image" src="./images/Домбай.png" alt="">
-              <div class="elements__card-container">
-                <h2 class="elements__card-title">Домбай</h2>
-                <button class="elements__like-icon" type="button" aria-label="поставить лайк"></button>
+          <li class="element">
+              <img class="element__image" src="./images/Въетнам.jpg" alt="Вьетнам">
+              <div class="element__card-container">
+                <h2 class="element__card-title">Въетнам</h2>
+                <button class="element__like-icon" type="button" aria-label="поставить лайк"></button>
               </div>
-            </div>
           </li>
 
         </ul>
 
       </section>
     </main>
-      <footer class="footer">
+      <footer class="footer page__footer">
         <p class="footer__caption">© 2023 Mesto Russia</p>
       </footer>
 
@@ -99,13 +87,24 @@
         <div class="popup__content">
           <h2 class="popup__title">Редактировать профиль</h2>
           <form class="popup__form">
-            <input class="popup__input popup__input_type-name" type="text" name="name" value placeholder ="Ваше имя">
-            <input class="popup__input popup__input_type-status" type="text" name="status" value placeholder ="Статус">
+
+            <input class="popup__input popup__input_type-name"
+            type="text"
+            name="name"
+            value=""
+            placeholder ="Ваше имя">
+
+            <input class="popup__input popup__input_type-status"
+            type="text"
+            name="status"
+            value=""
+            placeholder ="Статус">
+
             <button class="popup__submit" type="submit">Сохранить</button>
           </form>
           <button class="popup__close"></button>
         </div>
       </section>
-      <script src="./index.js"></script>
+      <script src="./pages/index.js"></script>
   </body>
 </html>

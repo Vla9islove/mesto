@@ -7,6 +7,8 @@ const popupProfilInputName = popupEditInfo.querySelector(".popup__input_type-nam
 const popupProfilInputStatus = popupEditInfo.querySelector(".popup__input_type-status"); //Поле ввода статуса в попапе
 const buttonSubmitProfilForm = popupEditInfo.querySelector(".popup__submit"); //Кнопка отправки информации
 
+const profileName = document.querySelector(".profile__name") //Строка в которой происходит замена имени
+const profileStatus = document.querySelector(".profile__status") //Строка в которой происходит замена статуса
 
 console.log(buttonProfileEdit);
 console.log(popupEditInfo);
@@ -15,12 +17,18 @@ console.log(popupProfilInputName);
 console.log(popupProfilInputStatus);
 console.log(popupProfilForm);
 console.log(buttonSubmitProfilForm);
+console.log(profileName);
+console.log(profileStatus);
 
 
 // Открытие попап с информацией
 
 function openPopupInfo() {
   popupEditInfo.classList.add("popup_opened");
+
+  popupProfilInputName.value = profileName.innerHTML;
+  popupProfilInputStatus.value = profileStatus.innerHTML;
+
 }
 
 buttonProfileEdit.addEventListener("click", openPopupInfo);
@@ -33,19 +41,17 @@ function closePopupInfo() {
 
 buttonCloseProfileEdit.addEventListener("click", closePopupInfo);
 
-function handleFormSubmit (evt) {
-  evt.preventDefault();
+popupProfilForm.addEventListener('submit', editProfile);
 
-  // Получите значение полей jobInput и nameInput из свойства value
+function editProfile (event) {
+  event.preventDefault();
 
-  // Выберите элементы, куда должны быть вставлены значения полей
+  const name = popupProfilInputName.value;
 
-  // Вставьте новые значения с помощью textContent
+  const status = popupProfilInputStatus.value;
+
+  profileName.innerHTML = name;
+  profileStatus.innerHTML = status;
+
+  popupEditInfo.classList.remove("popup_opened");
 }
-
-// Прикрепляем обработчик к форме:
-// он будет следить за событием “submit” - «отправка»
-formElement.addEventListener('submit', handleFormSubmit);
-
-
-popupProfilForm.addEventListener("submit")
