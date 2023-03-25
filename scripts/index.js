@@ -3,22 +3,11 @@ const buttonProfileEdit = document.querySelector(".profile__edit"); //Кнопк
 const buttonCloseProfileEdit = popupEditInfo.querySelector(".popup__close"); //Кнопка закрытия попапа
 
 const popupProfilForm = popupEditInfo.querySelector(".popup__form"); //Форма внутри попапа с информацией профиля
-const popupProfilInputName = popupEditInfo.querySelector(".popup__input_type-name"); //Поле ввода имени в попапе
-const popupProfilInputStatus = popupEditInfo.querySelector(".popup__input_type-status"); //Поле ввода статуса в попапе
-const buttonSubmitProfilForm = popupEditInfo.querySelector(".popup__submit"); //Кнопка отправки информации
+const popupProfilInputName = popupEditInfo.querySelector(".popup__input_type_name"); //Поле ввода имени в попапе
+const popupProfilInputStatus = popupEditInfo.querySelector(".popup__input_type_status"); //Поле ввода статуса в попапе
 
 const profileName = document.querySelector(".profile__name") //Строка в которой происходит замена имени
 const profileStatus = document.querySelector(".profile__status") //Строка в которой происходит замена статуса
-
-console.log(buttonProfileEdit);
-console.log(popupEditInfo);
-console.log(buttonCloseProfileEdit);
-console.log(popupProfilInputName);
-console.log(popupProfilInputStatus);
-console.log(popupProfilForm);
-console.log(buttonSubmitProfilForm);
-console.log(profileName);
-console.log(profileStatus);
 
 
 // Открытие попап с информацией
@@ -26,8 +15,8 @@ console.log(profileStatus);
 function openPopupInfo() {
   popupEditInfo.classList.add("popup_opened");
 
-  popupProfilInputName.value = profileName.innerHTML;
-  popupProfilInputStatus.value = profileStatus.innerHTML;
+  popupProfilInputName.value = profileName.textContent;
+  popupProfilInputStatus.value = profileStatus.textContent;
 
 }
 
@@ -50,8 +39,7 @@ function editProfile (event) {
 
   const status = popupProfilInputStatus.value;
 
-  profileName.innerHTML = name;
-  profileStatus.innerHTML = status;
-
-  popupEditInfo.classList.remove("popup_opened");
+  profileName.textContent = name;
+  profileStatus.textContent = status;
+  closePopupInfo();
 }

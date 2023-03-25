@@ -83,18 +83,18 @@
         <p class="footer__caption">© 2023 Mesto Russia</p>
       </footer>
 
-      <section class="popup popup_type_edit-info">
-        <div class="popup__content">
+      <div class="popup popup_type_edit-info">
+        <div class="popup__container">
           <h2 class="popup__title">Редактировать профиль</h2>
-          <form class="popup__form">
+          <form class="popup__form" name="profile-form">
 
-            <input class="popup__input popup__input_type-name"
+            <input class="popup__input popup__input_type_name"
             type="text"
             name="name"
             value=""
             placeholder ="Ваше имя">
 
-            <input class="popup__input popup__input_type-status"
+            <input class="popup__input popup__input_type_status"
             type="text"
             name="status"
             value=""
@@ -102,9 +102,9 @@
 
             <button class="popup__submit" type="submit">Сохранить</button>
           </form>
-          <button class="popup__close"></button>
+          <button class="popup__close" type="button"></button>
         </div>
-      </section>
-      <script src="./pages/index.js"></script>
+      </div>
+      <script src="./scripts/index.js"></script>
   </body>
 </html>

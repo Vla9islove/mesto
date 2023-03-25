@@ -4,10 +4,10 @@
   width: 24px;
   height: 24px;
   border: 1px solid #fff;
-  background-image: url(../../../images/ручка\ редактирования\ информации.svg);
+  background-image: url(../../../images/editPen.svg);
   background-repeat: no-repeat;
   background-position: center;
-  background-color: #000;
+  background-color: transparent;
 }
 
 .profile__edit:hover {
