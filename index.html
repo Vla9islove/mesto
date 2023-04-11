@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./pages/index.css">
+    <script src="./scripts/index.js" defer type="module"></script>
     <title>Место</title>
   </head>
   <body class="page">
@@ -26,62 +27,24 @@
 
       <section class="elements page__elements">
         <ul class="elements__list">
-
-          <li class="element">
-            <img class="element__image" src="./images/Таиланд.jpg" alt="Таиланд">
-            <div class="element__container">
-              <h2 class="element__title">Таиланд</h2>
-              <button class="element__like-icon" type="button" aria-label="поставить лайк"></button>
-            </div>
-          </li>
-
-          <li class="element">
-            <img class="element__image" src="./images/Бали.jpg" alt="Бали">
-            <div class="element__container">
-              <h2 class="element__title">Бали</h2>
-              <button class="element__like-icon" type="button" aria-label="поставить лайк"></button>
-            </div>
-          </li>
-
-          <li class="element">
-              <img class="element__image" src="./images/Мальдивы.jpg" alt="Мальдивы">
-              <div class="element__container">
-                <h2 class="element__title">Мальдивские острова</h2>
-                <button class="element__like-icon" type="button" aria-label="поставить лайк"></button>
-              </div>
-          </li>
-
-          <li class="element">
-              <img class="element__image" src="./images/Япония.jpg" alt="Япония">
-              <div class="element__container">
-                <h2 class="element__title">Япония</h2>
-                <button class="element__like-icon" type="button" aria-label="поставить лайк"></button>
-              </div>
-          </li>
-
-          <li class="element">
-              <img class="element__image" src="./images/Токио.jpg" alt="Токио">
-              <div class="element__container">
-                <h2 class="element__title">Токио</h2>
-                <button class="element__like-icon" type="button" aria-label="поставить лайк"></button>
-              </div>
-          </li>
-
-          <li class="element">
-              <img class="element__image" src="./images/Въетнам.jpg" alt="Вьетнам">
-              <div class="element__container">
-                <h2 class="element__title">Вьетнам</h2>
-                <button class="element__like-icon" type="button" aria-label="поставить лайк"></button>
-              </div>
-          </li>
-
         </ul>
-
       </section>
+
     </main>
       <footer class="footer page__footer">
         <p class="footer__caption">© 2023 Mesto Russia</p>
       </footer>
+
+      <template id="element-template">
+        <li class="element">
+          <img class="element__image" src="" alt="">
+          <div class="element__container">
+            <h2 class="element__title"></h2>
+            <button class="element__like-icon" type="button" aria-label="поставить лайк"></button>
+          </div>
+          <button class="element__delete-image" type="button" aria-label="удалить карточку"></button>
+        </li>
+      </template>
 
       <div class="popup popup_type_edit-info">
         <div class="popup__container">
@@ -92,19 +55,49 @@
             type="text"
             name="name"
             value=""
-            placeholder ="Ваше имя">
+            placeholder = "Ваше имя">
 
             <input class="popup__input popup__input_type_status"
             type="text"
             name="status"
             value=""
-            placeholder ="Статус">
+            placeholder = "Статус">
 
             <button class="popup__submit" type="submit">Сохранить</button>
           </form>
           <button class="popup__close" type="button"></button>
         </div>
       </div>
-      <script src="./scripts/index.js"></script>
+
+      <div class="popup popup_type_add-place">
+        <div class="popup__container">
+          <h2 class="popup__title">Новое место</h2>
+          <form class="popup__form" name="add-form">
+
+            <input class="popup__input popup__input_type_place-name"
+            type="text"
+            name="place-name"
+            value=""
+            placeholder = "Название">
+
+            <input class="popup__input popup__input_type_photoUrl"
+            type="text"
+            name="photoUrl"
+            value=""
+            placeholder = "Ссылка на картинку">
+
+            <button class="popup__submit" type="submit">Создать</button>
+          </form>
+          <button class="popup__close" type="button"></button>
+        </div>
+      </div>
+
+      <div class="popup popup_type_zoom-place">
+        <div class="popup__image-container">
+          <img class="popup__image" src="#" alt="#">
+          <p class="popup__image-description"></p>
+          <button class="popup__close" type="button"></button>
+        </div>
+      </div>
   </body>
 </html>
