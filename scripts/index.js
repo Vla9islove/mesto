@@ -4,7 +4,6 @@ const elementTemplate = document.getElementById("element-template"); // Нашл
 const cardSection = document.querySelector(".elements__list"); //нашли где создаются карточки
 
 //Модальные окна (PopUp)
-const popups = document.querySelector(".popup");
 const popupEditInfo = document.querySelector(".popup_type_edit-info"); //Попап с информацией профиля
 const popupAddPlace = document.querySelector(".popup_type_add-place"); //Попап с добавлением карточки
 const popupZoomPlace = document.querySelector(".popup_type_zoom-place");
@@ -32,14 +31,12 @@ const popupImageDescription = popupZoomPlace.querySelector(".popup__image-descri
 const profileName = document.querySelector(".profile__name"); //Строка в которой происходит замена имени
 const profileStatus = document.querySelector(".profile__status"); //Строка в которой происходит замена статуса
 
-
-
 const createPlaceElement = (placeData) => { // placeData - это информация содержащаяся в объекте (фото, название).
   const placeElement = elementTemplate.content.querySelector(".element").cloneNode(true); //клонируем нашу карточку темплейт
   const placeCardName = placeElement.querySelector(".element__title"); //нашли название карточки в темплейте
   const placeCardImage = placeElement.querySelector(".element__image");//нашли картинку карточки в темплейте
 
-  placeCardName.innerHTML = placeData.name;
+  placeCardName.textContent = placeData.name;
   placeCardImage.src = placeData.link;
   placeCardImage.alt = placeData.name;
 
@@ -60,7 +57,7 @@ const createPlaceElement = (placeData) => { // placeData - это информа
   placeCardImage.addEventListener('click', () => {
     popupImage.src = placeData.link;
     popupImage.alt = placeData.name;
-    popupImageDescription.innerHTML = placeData.name;
+    popupImageDescription.textContent = placeData.name;
     openPopup(popupZoomPlace);
   });
 
@@ -68,8 +65,11 @@ const createPlaceElement = (placeData) => { // placeData - это информа
   return placeElement;
 };
 
-
 function renderPlaceElement(placeElement) {
+  cardSection.append(placeElement);
+}
+
+function renderNewPlaceElement(placeElement) {
   cardSection.prepend(placeElement);
 }
 
@@ -77,7 +77,7 @@ initialCards.forEach((place) => {
   renderPlaceElement(createPlaceElement(place));
 });
 
-//Универальная функция открытия попапа
+//Универcальная функция открытия попапа
 const openPopup = (popup) => {
   popup.classList.add('popup_opened');
 }
@@ -86,7 +86,6 @@ const openPopup = (popup) => {
 const closePopup = (popup) => {
   popup.classList.remove('popup_opened');
 };
-
 
 buttonProfileEdit.addEventListener('click', () => {
   openPopup(popupEditInfo);
@@ -98,7 +97,6 @@ buttonAddPlace.addEventListener('click', () => {
   openPopup(popupAddPlace);
 });
 
-
 buttonsClosePopup.forEach(function(button) {
   button.addEventListener('click', function() {
     closePopup(popupEditInfo);
@@ -106,7 +104,6 @@ buttonsClosePopup.forEach(function(button) {
     closePopup(popupZoomPlace);
   });
 });
-
 
 popupProfilForm.addEventListener('submit', editProfile);
 
@@ -121,7 +118,6 @@ function editProfile (event) {
 
   closePopup(popupEditInfo);
 }
-
 
 popupAddPlace.addEventListener('submit', addPlace);
 
@@ -138,7 +134,7 @@ function addPlace (event) {
     alt: name
   };
 
-  renderPlaceElement(createPlaceElement(cardData));
+  renderNewPlaceElement(createPlaceElement(cardData));
   closePopup(popupAddPlace);
   popupPlaceForm.reset();
-}
+};
