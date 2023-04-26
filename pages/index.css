@@ -40,5 +40,10 @@
 @import url(../blocks/page/__elements/page__elements.css);
 @import url(../blocks/page/__header/page__header.css);
 @import url(../blocks/popup/__image-description/popup__image-description.css);
-@import url(../blocks/popup/__container/_type_zoom-place/popup__container_type_zoom-place.css);
+@import url(../blocks/popup/__container/_type/popup__container_type_zoom-place.css);
 @import url(../blocks/popup/__image/popup__image.css);
+
+@import url(../blocks/popup/__input/__input-error/popup__input-error.css);
+@import url(../blocks/popup/__input/_type_invalid/popup__input_type_invalid.css);
+@import url(../blocks/popup/__input/__input-error/error__name.css);
+@import url(../blocks/popup/__submit/_disabled/popup__submit_disabled.css);

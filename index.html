@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./pages/index.css">
     <script src="./scripts/index.js" defer type="module"></script>
+    <script src="./scripts/validate.js" defer></script>
     <title>Место</title>
   </head>
   <body class="page">
@@ -49,19 +50,31 @@
       <div class="popup popup_type_edit-info">
         <div class="popup__container">
           <h2 class="popup__title">Редактировать профиль</h2>
-          <form class="popup__form" name="profile-form">
+          <form class="popup__form" name="profile-form" novalidate>
 
             <input class="popup__input popup__input_type_name"
             type="text"
             name="name"
+            id="name"
             value=""
-            placeholder = "Ваше имя">
+            placeholder ="Ваше имя"
+            minlength ="2"
+            maxlength ="40"
+            required>
+
+            <span id="error-name" class="popup__input-error popup__input-error_hiden"></span>
 
             <input class="popup__input popup__input_type_status"
             type="text"
+            id="status"
             name="status"
             value=""
-            placeholder = "Статус">
+            placeholder ="Статус"
+            minlength ="2"
+            maxlength ="200"
+            required>
+
+            <span id="error-status" class="popup__input-error popup__input-error_hiden"></span>
 
             <button class="popup__submit" type="submit">Сохранить</button>
           </form>
@@ -72,19 +85,27 @@
       <div class="popup popup_type_add-place">
         <div class="popup__container">
           <h2 class="popup__title">Новое место</h2>
-          <form class="popup__form" name="add-form">
+          <form class="popup__form" name="add-form" novalidate>
 
             <input class="popup__input popup__input_type_place-name"
             type="text"
+            id="place"
             name="place-name"
             value=""
-            placeholder = "Название">
+            placeholder = "Название"
+            minlength ="1"
+            maxlength ="30"
+            required>
+            <span id="error-place" class="popup__input-error popup__input-error_hiden"></span>
 
             <input class="popup__input popup__input_type_photoUrl"
-            type="text"
+            type="url"
+            id="photoUrl"
             name="photoUrl"
             value=""
-            placeholder = "Ссылка на картинку">
+            placeholder = "Ссылка на картинку"
+            required>
+            <span id="error-photoUrl" class="popup__input-error popup__input-error_hiden"></span>
 
             <button class="popup__submit" type="submit">Создать</button>
           </form>

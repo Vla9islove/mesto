@@ -4,6 +4,7 @@ const elementTemplate = document.getElementById("element-template"); // Нашл
 const cardSection = document.querySelector(".elements__list"); //нашли где создаются карточки
 
 //Модальные окна (PopUp)
+const popups = document.querySelectorAll(".popup");
 const popupEditInfo = document.querySelector(".popup_type_edit-info"); //Попап с информацией профиля
 const popupAddPlace = document.querySelector(".popup_type_add-place"); //Попап с добавлением карточки
 const popupZoomPlace = document.querySelector(".popup_type_zoom-place");
@@ -67,11 +68,11 @@ const createPlaceElement = (placeData) => { // placeData - это информа
 
 function renderPlaceElement(placeElement) {
   cardSection.append(placeElement);
-}
+};
 
 function renderNewPlaceElement(placeElement) {
   cardSection.prepend(placeElement);
-}
+};
 
 initialCards.forEach((place) => {
   renderPlaceElement(createPlaceElement(place));
@@ -80,21 +81,25 @@ initialCards.forEach((place) => {
 //Универcальная функция открытия попапа
 const openPopup = (popup) => {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupEsc);
 }
 
 //Универсальная функция закрытия попапа
 const closePopup = (popup) => {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupEsc);
 };
 
 buttonProfileEdit.addEventListener('click', () => {
-  openPopup(popupEditInfo);
+  resetAllErrorsPopup(popupEditInfo);
   popupProfilInputName.value = profileName.textContent;
   popupProfilInputStatus.value = profileStatus.textContent;
+  openPopup(popupEditInfo);
 });
 
 buttonAddPlace.addEventListener('click', () => {
   openPopup(popupAddPlace);
+  resetAllErrorsPopup(popupAddPlace);
 });
 
 buttonsClosePopup.forEach(function(button) {
@@ -102,6 +107,8 @@ buttonsClosePopup.forEach(function(button) {
     closePopup(popupEditInfo);
     closePopup(popupAddPlace);
     closePopup(popupZoomPlace);
+    // closeOverlay(popupEditInfo);
+    // closeOverlay(popupAddPlace);
   });
 });
 
@@ -127,7 +134,6 @@ function addPlace (event) {
   const name = inputPlaceName.value;
   const link = inputPlaceImage.value;
 
-
   const cardData =  {
     name,
     link,
@@ -138,3 +144,42 @@ function addPlace (event) {
   closePopup(popupAddPlace);
   popupPlaceForm.reset();
 };
+
+// function closePopupEsc(evt) { // функция закрытия по эскейпу такая же как и снизу, только поиск происходит сразу в функции
+//   if (evt.key === 'Escape') {
+//     closePopup(document.querySelector('.popup_opened'));
+//   }
+// }
+
+function closePopupEsc(evt) { // функция закрытия по эскейпу(Esc)
+  if (evt.key === 'Escape') {
+    const popupClose = document.querySelector('.popup_opened');
+    closePopup(popupClose);
+  }
+};
+
+popups.forEach((popup) => { // Закрытие попапа по оверлею
+  popup.addEventListener('click', (event) => {
+    if (event.target === popup) {
+      closePopup(popup);
+    }
+  });
+});
+
+// popups.forEach (item => { // Работает, но сложная запись, плюс используем повторное закрытие по кнопке, такой функционал у нас уже есть
+//   const buttonsClosePopup = item.querySelector('.popup__close');
+//   buttonsClosePopup.addEventListener('click', () => closePopup(item));
+//   item.addEventListener('click', closePopupOnOverlay);
+// });
+
+// function closePopupOnOverlay (evt){
+//   if (evt.currentTarget === evt.target) {
+//     closePopup(evt.currentTarget);
+//   }
+// };
+
+// function closeOverlay(popup){  // Работает, но почему-то коряво, только после нажатия на крестик начинает реагировать на оверлей
+//   popup.addEventListener('click', closePopupOnOverlay);
+// };
+
+
