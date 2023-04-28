@@ -82,7 +82,7 @@ initialCards.forEach((place) => {
 const openPopup = (popup) => {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupEsc);
-}
+};
 
 //Универсальная функция закрытия попапа
 const closePopup = (popup) => {
@@ -98,8 +98,8 @@ buttonProfileEdit.addEventListener('click', () => {
 });
 
 buttonAddPlace.addEventListener('click', () => {
-  openPopup(popupAddPlace);
   resetAllErrorsPopup(popupAddPlace);
+  openPopup(popupAddPlace);
 });
 
 buttonsClosePopup.forEach(function(button) {
@@ -107,8 +107,6 @@ buttonsClosePopup.forEach(function(button) {
     closePopup(popupEditInfo);
     closePopup(popupAddPlace);
     closePopup(popupZoomPlace);
-    // closeOverlay(popupEditInfo);
-    // closeOverlay(popupAddPlace);
   });
 });
 
@@ -124,7 +122,7 @@ function editProfile (event) {
   profileStatus.textContent = status;
 
   closePopup(popupEditInfo);
-}
+};
 
 popupAddPlace.addEventListener('submit', addPlace);
 
@@ -166,20 +164,18 @@ popups.forEach((popup) => { // Закрытие попапа по оверлею
   });
 });
 
-// popups.forEach (item => { // Работает, но сложная запись, плюс используем повторное закрытие по кнопке, такой функционал у нас уже есть
-//   const buttonsClosePopup = item.querySelector('.popup__close');
-//   buttonsClosePopup.addEventListener('click', () => closePopup(item));
-//   item.addEventListener('click', closePopupOnOverlay);
-// });
+popups.forEach (item => { // Работает, но сложная запись, плюс используем повторное закрытие по кнопке, такой функционал у нас уже есть
+  const buttonsClosePopup = item.querySelector('.popup__close');
+  buttonsClosePopup.addEventListener('click', () => closePopup(item));
+  item.addEventListener('click', closePopupOnOverlay);
+});
 
-// function closePopupOnOverlay (evt){
-//   if (evt.currentTarget === evt.target) {
-//     closePopup(evt.currentTarget);
-//   }
-// };
+function closePopupOnOverlay (evt){
+  if (evt.currentTarget === evt.target) {
+    closePopup(evt.currentTarget);
+  }
+};
 
 // function closeOverlay(popup){  // Работает, но почему-то коряво, только после нажатия на крестик начинает реагировать на оверлей
 //   popup.addEventListener('click', closePopupOnOverlay);
 // };
-
-
