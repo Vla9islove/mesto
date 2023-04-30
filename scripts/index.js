@@ -9,6 +9,8 @@ const popupEditInfo = document.querySelector(".popup_type_edit-info"); //Поп�
 const popupAddPlace = document.querySelector(".popup_type_add-place"); //Попап с добавлением карточки
 const popupZoomPlace = document.querySelector(".popup_type_zoom-place");
 
+const formPopupAddPlace = popupAddPlace.querySelector(".popup__form");
+
 //Кнопки модальных окон
 const buttonProfileEdit = document.querySelector(".profile__edit"); //Кнопка изменения информации в попапе с информацией
 const buttonAddPlace = document.querySelector(".profile__add-element"); //Кнопка добавления карточки
@@ -78,31 +80,31 @@ initialCards.forEach((place) => {
   renderPlaceElement(createPlaceElement(place));
 });
 
-//Универcальная функция открытия попапа
-const openPopup = (popup) => {
+const openPopup = (popup) => { //Универcальная функция открытия попапа
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupEsc);
 };
 
-//Универсальная функция закрытия попапа
-const closePopup = (popup) => {
+const closePopup = (popup) => { //Универсальная функция закрытия попапа
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', closePopupEsc);
 };
 
-buttonProfileEdit.addEventListener('click', () => {
+buttonProfileEdit.addEventListener('click', () => { // Слушатель клика на карандаш
   resetAllErrorsPopup(popupEditInfo);
   popupProfilInputName.value = profileName.textContent;
   popupProfilInputStatus.value = profileStatus.textContent;
   openPopup(popupEditInfo);
 });
 
-buttonAddPlace.addEventListener('click', () => {
+buttonAddPlace.addEventListener('click', () => { // Слушатель клика на кнопку добавления нового места
   resetAllErrorsPopup(popupAddPlace);
+  checkValidityStateButton(validationConfig, formPopupAddPlace);
+  //сюда нужна функция отвечающая за состояние кнопки при не/валидности
   openPopup(popupAddPlace);
 });
 
-buttonsClosePopup.forEach(function(button) {
+buttonsClosePopup.forEach(function(button) { //Слушатель клика на кнопку закрытия
   button.addEventListener('click', function() {
     closePopup(popupEditInfo);
     closePopup(popupAddPlace);
@@ -164,18 +166,19 @@ popups.forEach((popup) => { // Закрытие попапа по оверлею
   });
 });
 
-popups.forEach (item => { // Работает, но сложная запись, плюс используем повторное закрытие по кнопке, такой функционал у нас уже есть
-  const buttonsClosePopup = item.querySelector('.popup__close');
-  buttonsClosePopup.addEventListener('click', () => closePopup(item));
-  item.addEventListener('click', closePopupOnOverlay);
-});
 
-function closePopupOnOverlay (evt){
-  if (evt.currentTarget === evt.target) {
-    closePopup(evt.currentTarget);
-  }
-};
+// function closePopupOnOverlay (evt){
+//   if (evt.currentTarget === evt.target) {
+//     closePopup(evt.currentTarget);
+//   }
+// };
 
 // function closeOverlay(popup){  // Работает, но почему-то коряво, только после нажатия на крестик начинает реагировать на оверлей
 //   popup.addEventListener('click', closePopupOnOverlay);
 // };
+
+// popups.forEach (item => { // Работает, но сложная запись, плюс используем повторное закрытие по кнопке, такой функционал у нас уже есть
+//   const buttonsClosePopup = item.querySelector('.popup__close');
+//   buttonsClosePopup.addEventListener('click', () => closePopup(item));
+//   item.addEventListener('click', closePopupOnOverlay);
+// });

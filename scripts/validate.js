@@ -1,3 +1,4 @@
+
 const validationConfig = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
@@ -6,7 +7,8 @@ const validationConfig = {
   inputErrorClass: 'popup__input_type_invalid'
 };
 
-function enableValidation(config) {
+function enableValidation(config) { //Функция проверки валидации форм
+
   const forms = document.querySelectorAll(config.formSelector); //Нашли все формы
   const formsArray = Array.from(forms); //Сделали из них массив
 
@@ -31,12 +33,12 @@ function enableValidation(config) {
   });
 };
 
-function madeInputInvalid(config, input, errorMessageElement) { //Функция отвечающая за невалидность инпута
+function madeInputInvalid(config, input, errorMessageElement) { //Функция добавляющая ошибку при невалидности инпута
   input.classList.add(config.inputErrorClass);
   errorMessageElement.textContent = input.validationMessage;
 };
 
-function madeInputValid(config, input, errorMessageElement) { //Функция отвечающая за валидность инпута
+function madeInputValid(config, input, errorMessageElement) { //Функция убирающая ошибку при валидности инпута
   input.classList.remove(config.inputErrorClass);
   errorMessageElement.textContent = '';
 };
@@ -51,17 +53,17 @@ function checkValidityInput(config, input, form) { //Функция провер
   }
 };
 
-function submitButtonDisable(config, submitButton) {
+function submitButtonDisable(config, submitButton) { //функция  делающая кнопку задизейбленой
   submitButton.disabled = true;
   submitButton.classList.add(config.inactiveButtonClass);
 };
 
-function submitButtonEnable(config, submitButton) {
+function submitButtonEnable(config, submitButton) { //функция  снимающая дизейбл с кнопки
   submitButton.disabled = false;
   submitButton.classList.remove(config.inactiveButtonClass);
 };
 
-function checkValidityStateButton(config, form) {
+function checkValidityStateButton(config, form) { // Функция проверяющая валидность формы и переключающая состояние кнопки
   const submitButton = form.querySelector(config.submitButtonSelector);
 
   if (form.checkValidity()) {
@@ -81,6 +83,18 @@ function resetAllErrorsPopup(form) { // Скидываем все ошибки �
 };
 
 enableValidation(validationConfig);
+
+// function setSubmitButtonDisable(button) {  //Нужно подумать как ее просунуть в индекс js
+//   button.disabled = true;
+//   button.classList.add(validationConfig.inactiveButtonClass);
+// };
+
+
+
+
+
+
+
 
 // // включение валидации вызовом enableValidation
 // const validationConfig = {

@@ -10,6 +10,8 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  padding-bottom: 4px;
+  padding-left: 2px;
 }
 
 @media screen and (max-width: 515px) {
@@ -17,5 +19,6 @@
     font-size: 27px;
     line-height: 33px;
     max-width: 198px;
+    padding-bottom: 9px;
   }
 }
